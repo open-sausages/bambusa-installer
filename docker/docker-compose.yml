@@ -2,12 +2,18 @@ version: '3.1'
 
 services:
   solr:
-    image: solr4
-    restart: always
+    image: solr:8
     ports:
       - 8983:8983
     volumes:
       - data:/opt/solr/server/solr/mycores
+      # Solr running on a remote server doesn't allow
+      - ../vendor/firesphere/solr-search/Solr/5/extras:/opt/solr/ss-default-config
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - mycore
+      - /opt/solr/ss-default-config
   db:
     image: mysql:5
     command: --default-authentication-plugin=mysql_native_password

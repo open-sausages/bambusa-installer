@@ -1,0 +1,19 @@
+---
+After:
+ - '#SolrSearch'
+---
+Firesphere\SolrSearch\Services\SolrCoreService:
+  config:
+    endpoint:
+      localhost:
+        host: 'solr'
+        port: '8983'
+# TODO Reenable one https://github.com/silverstripe/silverstripe-framework/issues/8911 is fixed
+#        host: '`SOLR_SERVER`'
+#        port: '`SOLR_PORT`'
+  store:
+    mode: 'post'
+    uri: 'http://solr:8983'
+# TODO Reenable one https://github.com/silverstripe/silverstripe-framework/issues/8911 is fixed
+#    mode: '`SOLR_MODE`'
+#    path: '`SOLR_PATH`'
